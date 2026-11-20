@@ -26,7 +26,10 @@ when fully switched off.
 - **Home Assistant** integration over MQTT discovery (wake button, result of the last attempt) and a
   [REST API](docs/technical/api.md) – see [Home Assistant](docs/integrations/home-assistant.md).
 - **RGB status LED** (ready, connecting, no Wi-Fi, wake in progress, success / failure…).
-- Self-healing Wi-Fi, factory reset (hold BOOT 20 s), no cloud, no account, nothing leaves your network.
+- **Update notice** in the panel when a new release is out – your browser asks GitHub, the ESP32 does not (can be
+  turned off).
+- Self-healing Wi-Fi, factory reset (hold BOOT 20 s), no cloud, no account; the ESP32 sends nothing outside your
+  network.
 
 ## Setup panel
 
@@ -41,21 +44,20 @@ mode, red off). The screenshots use example data.
 
 <table>
   <tr>
-    <td width="50%" valign="top"><b>Wi-Fi</b> – network, password and country (channels 12–13)<br><br>
-      <img src="docs/images/panel-wifi.png" alt="Wi-Fi settings: network name with Scan button, password and country"></td>
-    <td width="50%" valign="top"><b>Bluetooth</b> – console and controller addresses from the address reader<br><br>
-      <img src="docs/images/panel-bluetooth.png" alt="Bluetooth settings: address reader downloads, setup code, PS5 and DualSense addresses"></td>
-  </tr>
-  <tr>
-    <td valign="top"><b>Wake-on-LAN</b> – the MAC to wake, consoles found in the network<br><br>
-      <img src="docs/images/panel-wol.png" alt="Wake-on-LAN settings: MAC of the ESP32, optional PS5 MAC and the list of consoles found"></td>
-    <td valign="top"><b>Home Assistant</b> – MQTT broker for automatic discovery<br><br>
-      <img src="docs/images/panel-mqtt.png" alt="Home Assistant settings: MQTT broker address, user name and password"></td>
-  </tr>
-  <tr>
-    <td valign="top"><b>LED and panel</b> – LED, device name, panel login, home-network access, HTTPS certificate<br><br>
-      <img src="docs/images/panel-led.png" alt="LED and panel settings: LED options, device name, panel user and password, access from home network, HTTPS and certificate"></td>
-    <td valign="top"></td>
+    <td width="50%" valign="top">
+      <b>Wi-Fi</b> – network, password, country (channels 12–13)<br>
+      <img src="docs/images/panel-wifi.png" alt="Wi-Fi settings: network name with Scan button, password and country"><br><br>
+      <b>Bluetooth</b> – console and controller addresses<br>
+      <img src="docs/images/panel-bluetooth.png" alt="Bluetooth settings: address reader downloads, setup code, PS5 and DualSense addresses"><br><br>
+      <b>Wake-on-LAN</b> – MAC to wake, consoles found in the network<br>
+      <img src="docs/images/panel-wol.png" alt="Wake-on-LAN settings: MAC of the ESP32, optional PS5 MAC and the list of consoles found">
+    </td>
+    <td width="50%" valign="top">
+      <b>LED and panel</b> – LED, device name, login, home-network access, HTTPS<br>
+      <img src="docs/images/panel-led.png" alt="LED and panel settings: LED options, device name, panel user and password, access from home network, HTTPS and certificate"><br><br>
+      <b>Home Assistant</b> – MQTT broker for automatic discovery<br>
+      <img src="docs/images/panel-mqtt.png" alt="Home Assistant settings: MQTT broker address, user name and password">
+    </td>
   </tr>
 </table>
 

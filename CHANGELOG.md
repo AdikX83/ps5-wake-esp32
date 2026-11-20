@@ -2,8 +2,11 @@
 
 All notable changes are listed here. The project follows [semantic versioning](https://semver.org/).
 
-## [Unreleased]
+## [1.0.2]
 
+- Panel: notice when a newer release is available on GitHub, with links to the release notes and the web installer.
+  The check is made by the browser that shows the panel (not by the ESP32), at most every 6 hours, and can be turned
+  off with "Check for updates" in the LED and panel section. "Hide" dismisses the notice for that version.
 - Panel: on narrow screens (phones) the status labels are shown above the values and the panel address no longer
   runs past the edge of the card.
 - README: screenshots of the setup panel and each of its sections.

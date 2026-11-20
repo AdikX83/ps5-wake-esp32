@@ -56,6 +56,7 @@ Current state and settings (passwords are never returned).
 | `device_name`, `hostname` | optional device name; mDNS name without `.local` (the device name, or `ps5-wake-` + the 4 hex digits of the panel network name) |
 | `consoles` | PS5 consoles answering discovery in the last 10 minutes: `[{"mac","name","ip","state"}]` |
 | `led_dark` | LED completely off (only the BOOT hold feedback is shown) |
+| `update_check` | the panel checks GitHub for a newer release (done by the browser, not the ESP32) |
 | `led_idle_off`, `portal_always`, `https` | panel options (LED off when idle, access from home network, HTTPS) |
 | `ap_custom` | an own panel password is set |
 | `ap_ssid`, `portal_seconds_left`, `via_ap`, `secure` | panel network name, time until it closes, request came through the panel network / over HTTPS |
@@ -77,7 +78,7 @@ Saves all settings and restarts the ESP32. Body:
 | `ap_password` | until an own one is set | panel password, 8–63 characters, not the default |
 | `device_name` | no | up to 24 characters; empty for none |
 | `panel_user` | no | panel user name, 3–32 characters without `:`; default `admin` |
-| `led_idle_off`, `led_dark`, `portal_always`, `https` | no | booleans |
+| `led_idle_off`, `led_dark`, `portal_always`, `https`, `update_check` | no | booleans |
 | `mqtt_on`, `mqtt_url`, `mqtt_user`, `mqtt_pass` | no | `mqtt_url`: `mqtt://host:port` or `mqtts://host:port`; empty `mqtt_pass` keeps the saved one |
 | `lang` | no | panel language |
 

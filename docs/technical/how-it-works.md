@@ -72,6 +72,15 @@ reachable. Measured: switched off from the menu the console goes silent at once;
 whose `host-id` matches count. The state is shown in the panel (dot on the power icon), in `/api/status` and over
 MQTT.
 
+## Update notice
+
+The panel compares the firmware version with the latest GitHub release
+(`api.github.com/repos/AdikX83/ps5-wake-esp32/releases/latest`). The request is made by the browser showing the
+panel, not by the ESP32, at most every 6 hours (the answer is cached in the browser's local storage), so the device
+itself never contacts the internet. A newer release is shown as a notice with links to the release notes and the web
+installer; nothing is installed automatically. The flash layout has a single application slot, so updates are always
+installed over USB. "Check for updates" in the panel (`update_check`) turns the check off.
+
 ## Several devices in one network
 
 Every device has its own mDNS name: the device name from the panel (lower case, accents removed, spaces as dashes,

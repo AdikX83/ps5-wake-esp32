@@ -46,6 +46,7 @@ static portMUX_TYPE request_lock = portMUX_INITIALIZER_UNLOCKED;
 static const char *TAG = "ps5_wol";
 /* portal_always: the panel on the home network ("Access from home network"), on by default; panel_https: HTTPS there. */
 static bool configured, safe_mode, led_idle_off, led_dark, wol_ps5_set, portal_always = true, panel_https = true;
+static bool update_check = true; /* the panel asks GitHub for new releases (from the browser, not the ESP32) */
 static uint8_t wol_ps5[6];
 static volatile bool sta_paused;
 static volatile int64_t disconnected_since;
@@ -64,6 +65,7 @@ static void load_extras(void)
     flag = 0;
     if (nvs_get_u8(handle, "portal_on", &flag) == ESP_OK) portal_always = flag != 0;
     if (nvs_get_u8(handle, "https", &flag) == ESP_OK) panel_https = flag != 0;
+    if (nvs_get_u8(handle, "upd_check", &flag) == ESP_OK) update_check = flag != 0;
     nvs_close(handle);
 }
 
@@ -613,6 +615,7 @@ void app_status_json(cJSON *root)
     cJSON_AddBoolToObject(root, "busy", busy);
     cJSON_AddBoolToObject(root, "led_idle_off", led_idle_off);
     cJSON_AddBoolToObject(root, "led_dark", led_dark);
+    cJSON_AddBoolToObject(root, "update_check", update_check);
     cJSON_AddBoolToObject(root, "portal_always", portal_always);
     cJSON_AddBoolToObject(root, "https", panel_https);
     char panel_user[33];
@@ -737,6 +740,7 @@ esp_err_t app_save_json(const cJSON *root, const char **error)
     const cJSON *led_dark_in = cJSON_GetObjectItemCaseSensitive(root, "led_dark");
     const cJSON *always = cJSON_GetObjectItemCaseSensitive(root, "portal_always");
     const cJSON *https = cJSON_GetObjectItemCaseSensitive(root, "https");
+    const cJSON *upd_check_in = cJSON_GetObjectItemCaseSensitive(root, "update_check");
     const cJSON *panel_user = cJSON_GetObjectItemCaseSensitive(root, "panel_user");
     const cJSON *device_name = cJSON_GetObjectItemCaseSensitive(root, "device_name");
     settings_t next = settings;
@@ -824,6 +828,7 @@ esp_err_t app_save_json(const cJSON *root, const char **error)
     if (result == ESP_OK) result = nvs_set_u8(handle, "led_dark", cJSON_IsTrue(led_dark_in) ? 1 : 0);
     if (result == ESP_OK) result = nvs_set_u8(handle, "portal_on", cJSON_IsTrue(always) ? 1 : 0);
     if (result == ESP_OK) result = nvs_set_u8(handle, "https", cJSON_IsFalse(https) ? 0 : 1);
+    if (result == ESP_OK) result = nvs_set_u8(handle, "upd_check", cJSON_IsFalse(upd_check_in) ? 0 : 1);
     if (result == ESP_OK && cJSON_IsString(panel_user) && panel_user->valuestring[0])
         result = nvs_set_str(handle, "panel_user", panel_user->valuestring);
     if (result == ESP_OK && cJSON_IsString(device_name)) result = nvs_set_str(handle, "dev_name", device_name->valuestring);
