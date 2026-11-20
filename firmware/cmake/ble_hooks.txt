@@ -1,0 +1,2 @@
+# Only the Soft-BR scheduler hook; none of the upstream CIS/LE Audio hooks.
+ble_lll_sched.c.o r_ble_lll_sched_pop_executed_sch

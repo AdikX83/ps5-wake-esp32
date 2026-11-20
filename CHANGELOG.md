@@ -1,0 +1,31 @@
+# Changelog
+
+All notable changes are listed here. The project follows [semantic versioning](https://semver.org/).
+
+## [1.0.0]
+
+First public release.
+
+- Wakes a PS5 from rest mode and from fully off over Bluetooth Classic (Soft-BR on the ESP32-C6), acting as the
+  paired DualSense.
+- Wake-on-LAN: UDP magic packets on ports 9 and 7, and raw Ethernet frames (EtherType 0x0842) as sent by routers
+  such as Asuswrt-Merlin. Reacts to the ESP32's own MAC and, optionally, to the PS5's network MAC.
+- BOOT button: short press wakes, 5–20 s opens the setup panel, 20 s erases all settings; safe mode when held at
+  power-on.
+- Setup panel in 30 languages: Wi-Fi scan, country, Bluetooth addresses via a setup code, WoL options, LED option,
+  "Wake now" test, status and extend; HTTPS with a device-generated certificate; `ps5-wake-xxxx.local`.
+- "Access from home network" (on by default): the panel is served on the home network behind the panel user name (default `admin`) and password, without the access point;
+  HTTPS by default with a device-generated certificate (NTP-dated, 825 days, renewed automatically).
+- A new or reset device starts the setup panel network by itself.
+- Console state (on / rest mode / off) from the PlayStation discovery protocol: in the panel, the API and Home
+  Assistant.
+- Unique address per device (`<device-name>.local` or `ps5-wake-xxxx.local`), optional device name, choice of
+  the console when several answer in the network.
+- Home Assistant integration over MQTT discovery (wake button, last result, Wi-Fi signal); REST API documentation.
+- Wi-Fi country: "Automatic (from the router)" by default, suggested from the browser, with a warning for networks on
+  channels 12–13.
+- An own panel password is required before saving.
+- Address reader for Windows (no installation), macOS and Linux, downloadable from the panel.
+- RGB LED status colours; the LED can be off when ready or off completely.
+- Wi-Fi reconnect handling for WPA3 access points and an offline watchdog.
+- Web installer, CI, user guides in 30 languages.

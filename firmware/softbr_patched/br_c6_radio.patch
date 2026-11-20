@@ -1,0 +1,14 @@
+--- a/c6_firmware/main/br_c6_radio.c
++++ b/c6_firmware/main/br_c6_radio.c
+@@ -753,7 +753,10 @@
+ 			continue;
+ 		}
+ 		const bool held = baseband_holds(s);
+-		if (held && (int32_t)(now - s->end_tick) < (int32_t)(s->id_only ? BR_RX_ID_OVERRUN_US : BR_RX_OVERRUN_US)) {
++		/* ps5_wol local patch: every RX slot waits for the natural end of a capture, as ID slots do. The length
++		 * byte comes from LAP[13:6] of the paired controller address (224 for the PS5 pad, ~1.9 ms), so stopping
++		 * after BR_RX_OVERRUN_US dropped every answer to NEW_CONN POLLs and failed the link with 0x3E. */
++		if (held && (int32_t)(now - s->end_tick) < (int32_t)BR_RX_ID_OVERRUN_US) {
+ 			s->due_tick = now + BR_RX_RECHECK_US;
+ 			s_rstats.rx_not_due++;
+ 			continue;

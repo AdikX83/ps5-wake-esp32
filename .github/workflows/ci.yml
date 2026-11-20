@@ -1,0 +1,47 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  checks:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: recursive
+      - name: Privacy scan
+        run: python3 tools/privacy_scan.py
+      - name: Host tests
+        run: tests/run.sh
+
+  firmware:
+    runs-on: ubuntu-latest
+    container: espressif/idf:v5.5.5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: recursive
+      - name: Build
+        shell: bash
+        run: |
+          git config --global --add safe.directory '*'
+          . $IDF_PATH/export.sh
+          cd firmware
+          idf.py set-target esp32c6
+          idf.py build
+          python ../tools/verify_build.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: firmware
+          path: |
+            firmware/build/bootloader/bootloader.bin
+            firmware/build/partition_table/partition-table.bin
+            firmware/build/ps5_wake.bin
+            firmware/build/verification.json

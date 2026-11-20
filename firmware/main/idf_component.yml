@@ -1,0 +1,3 @@
+## Managed components (downloaded by the ESP-IDF component manager on the first build).
+dependencies:
+  espressif/mdns: "^1.4"   # ps5-wake-xxxx.local name for the setup panel

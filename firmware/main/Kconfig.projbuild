@@ -1,0 +1,5 @@
+# The unmodified C6 adapter expects this setting from its original ESP-Hosted project.
+config ESP_DEFAULT_TASK_PRIO
+    int
+    range 1 22
+    default 22

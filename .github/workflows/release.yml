@@ -1,0 +1,92 @@
+name: Release
+
+on:
+  push:
+    tags: ["v*"]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: release
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    container: espressif/idf:v5.5.5
+    outputs:
+      version: ${{ steps.ver.outputs.version }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: recursive
+      - id: ver
+        shell: bash
+        run: echo "version=$(cat VERSION)" >> "$GITHUB_OUTPUT"
+      - name: Check tag matches VERSION
+        if: startsWith(github.ref, 'refs/tags/')
+        shell: bash
+        run: test "${GITHUB_REF_NAME}" = "v$(cat VERSION)"
+      - name: Build and verify
+        shell: bash
+        run: |
+          git config --global --add safe.directory '*'
+          . $IDF_PATH/export.sh
+          cd firmware
+          idf.py set-target esp32c6
+          idf.py build
+          python ../tools/verify_build.py
+          cd build
+          python -m esptool --chip esp32c6 merge_bin -o ../../ps5-wake-esp32c6-$(cat ../../VERSION).bin @flash_args
+      - name: Collect files
+        shell: bash
+        run: |
+          v=$(cat VERSION)
+          mkdir -p dist site/firmware
+          cp firmware/build/bootloader/bootloader.bin firmware/build/partition_table/partition-table.bin \
+             firmware/build/ps5_wake.bin firmware/build/verification.json "ps5-wake-esp32c6-$v.bin" dist/
+          cp -r web/. site/
+          cp firmware/build/bootloader/bootloader.bin firmware/build/partition_table/partition-table.bin \
+             firmware/build/ps5_wake.bin site/firmware/
+          sed "s/__VERSION__/$v/" web/manifest.template.json > site/manifest.json
+          rm site/manifest.template.json
+          (cd dist && sha256sum * > SHA256SUMS.txt)
+      - uses: actions/upload-artifact@v4
+        with:
+          name: dist
+          path: dist
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: site
+
+  release:
+    needs: build
+    if: startsWith(github.ref, 'refs/tags/')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          name: dist
+          path: dist
+      - name: Create release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          v="${{ needs.build.outputs.version }}"
+          awk -v v="$v" '$0 ~ "^## \\[?"v {f=1; next} /^## / && f {exit} f' CHANGELOG.md > notes.md
+          gh release create "$GITHUB_REF_NAME" dist/* --title "PS5 Wake $v" --notes-file notes.md
+
+  pages:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
+    steps:
+      - id: deploy
+        uses: actions/deploy-pages@v4

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PS5 Wake – web installer</title>
+<script type="module" src="https://unpkg.com/esp-web-tools@10/dist/web/install-button.js?module"></script>
+<style>
+  :root { color-scheme: light dark; --fg: #1b1d22; --muted: #5d6370; --bg: #f6f7f9; --card: #fff; --accent: #2557d6; --line: #dde1e8; }
+  @media (prefers-color-scheme: dark) { :root { --fg: #e8eaef; --muted: #a0a7b4; --bg: #121419; --card: #1b1e25; --accent: #7aa2ff; --line: #2c313b; } }
+  * { box-sizing: border-box; }
+  body { margin: 0; font: 16px/1.55 system-ui, -apple-system, "Segoe UI", sans-serif; color: var(--fg); background: var(--bg); }
+  main { max-width: 760px; margin: 0 auto; padding: 40px 20px 60px; }
+  h1 { font-size: 1.9rem; margin: 0 0 6px; letter-spacing: -0.01em; }
+  .lead { color: var(--muted); margin: 0 0 28px; }
+  .card { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 22px 24px; margin-bottom: 18px; }
+  h2 { font-size: 1.1rem; margin: 0 0 10px; }
+  ol, ul { margin: 0; padding-left: 1.3em; }
+  li + li { margin-top: 6px; }
+  code { font: 0.92em ui-monospace, SFMono-Regular, Consolas, monospace; background: color-mix(in srgb, var(--line) 55%, transparent); padding: 1px 5px; border-radius: 4px; }
+  a { color: var(--accent); }
+  esp-web-install-button { display: inline-block; margin: 6px 0 10px; }
+  .note { color: var(--muted); font-size: 0.92rem; margin: 10px 0 0; }
+  .langs { columns: 3 150px; padding: 0; list-style: none; }
+  .langs li { margin: 0 0 4px; }
+  footer { color: var(--muted); font-size: 0.88rem; margin-top: 30px; }
+</style>
+</head>
+<body>
+<main>
+  <h1>PS5 Wake</h1>
+  <p class="lead">Wake your PlayStation 5 with Wake-on-LAN using an ESP32-C6 board. Version <span id="ver">–</span>.</p>
+
+  <section class="card">
+    <h2>Install or update the firmware</h2>
+    <ol>
+      <li>Use <b>Chrome</b> or <b>Edge</b> on a computer.</li>
+      <li>Connect the ESP32-C6 board with a USB <b>data</b> cable.</li>
+      <li>Click the button and choose the board's serial port.</li>
+    </ol>
+    <esp-web-install-button manifest="manifest.json">
+      <span slot="unsupported">Your browser does not support Web Serial. Use Chrome or Edge on a computer.</span>
+      <span slot="not-allowed">The installer needs a secure (HTTPS) page.</span>
+    </esp-web-install-button>
+    <p class="note">When updating, answer <b>No</b> to “Erase device” to keep your settings; a first installation should erase it. If the port does not appear, hold BOOT while plugging in the cable.</p>
+  </section>
+
+  <section class="card">
+    <h2>After installing</h2>
+    <ol>
+      <li>A new device starts the setup panel network by itself (purple LED). Later, hold <b>BOOT</b> for 5–20 seconds and release – the LED turns red.</li>
+      <li>Connect to the Wi-Fi network <code>PS5-WAKE-xxxx</code>, password <code>ps5wol-setup</code>.</li>
+      <li>Open <code>https://192.168.4.1</code> (or <code>https://ps5-wake-xxxx.local</code>) and accept the certificate warning – the ESP32 uses its own certificate.</li>
+    </ol>
+  </section>
+
+  <section class="card">
+    <h2>User guide</h2>
+    <ul class="langs" id="langs"></ul>
+  </section>
+
+  <footer>
+    Source code, license and support: <a id="repo" href="../">GitHub</a>.
+    PS5 Wake is not affiliated with Sony Interactive Entertainment. “PlayStation”, “PS5” and “DualSense” are trademarks of their owners.
+  </footer>
+</main>
+<script>
+  const LANGS = { en:"English", bg:"Български", cs:"Čeština", da:"Dansk", de:"Deutsch", et:"Eesti", el:"Ελληνικά",
+    es:"Español", fr:"Français", ga:"Gaeilge", hr:"Hrvatski", it:"Italiano", lv:"Latviešu", lt:"Lietuvių",
+    hu:"Magyar", mt:"Malti", nl:"Nederlands", no:"Norsk", pl:"Polski", pt:"Português", ro:"Română",
+    sk:"Slovenčina", sl:"Slovenščina", fi:"Suomi", sv:"Svenska", tr:"Türkçe", uk:"Українська",
+    zh:"中文", ja:"日本語", ko:"한국어" };
+  // https://adikx83.github.io/REPO/ -> https://github.com/AdikX83/REPO
+  const owner = location.hostname.split(".")[0];
+  const repo = location.pathname.split("/").filter(Boolean)[0] || "ps5-wake-esp32";
+  const base = `https://github.com/${owner}/${repo}`;
+  document.getElementById("repo").href = base;
+  const ul = document.getElementById("langs");
+  for (const [code, name] of Object.entries(LANGS)) {
+    const li = document.createElement("li"), a = document.createElement("a");
+    a.href = `${base}/blob/main/docs/${code}/user-guide.md`; a.textContent = name; a.lang = code;
+    li.appendChild(a); ul.appendChild(li);
+  }
+  // ESP Web Tools shows a fixed estimate ("This will take 2 minutes…") that is far too long for this firmware
+  // (about 30 s). Its texts cannot be configured, so the estimate is removed from the dialog when it appears.
+  // If a future version words it differently, nothing is changed.
+  const dropEstimate = (root) => {
+    const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT);
+    for (let node = walker.nextNode(); node; node = walker.nextNode()) {
+      if (/This will take/i.test(node.nodeValue))
+        node.nodeValue = node.nodeValue.replace(/This will take[^.]*\.\s*/i, "");
+    }
+  };
+  const watchShadow = (host) => {
+    if (!host.shadowRoot || host.__ps5Watched) return;
+    host.__ps5Watched = true;
+    const observer = new MutationObserver(() => {
+      dropEstimate(host.shadowRoot);
+      host.shadowRoot.querySelectorAll("*").forEach((el) => el.shadowRoot && watchShadow(el));
+    });
+    observer.observe(host.shadowRoot, { childList: true, subtree: true, characterData: true });
+  };
+  new MutationObserver(() => document.querySelectorAll("ewt-install-dialog").forEach(watchShadow))
+    .observe(document.body, { childList: true, subtree: true });
+  fetch("manifest.json").then(r => r.json()).then(m => { document.getElementById("ver").textContent = m.version; }).catch(() => {});
+</script>
+</body>
+</html>
