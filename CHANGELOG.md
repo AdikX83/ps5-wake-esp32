@@ -7,6 +7,7 @@ All notable changes are listed here. The project follows [semantic versioning](h
 - Panel: on narrow screens (phones) the status labels are shown above the values and the panel address no longer
   runs past the edge of the card.
 - README: screenshots of the setup panel and each of its sections.
+- GitHub Actions: artifact and Pages actions updated to their Node.js 24 versions.
 
 ## [1.0.1]
 

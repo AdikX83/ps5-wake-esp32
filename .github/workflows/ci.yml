@@ -37,7 +37,7 @@ jobs:
           idf.py set-target esp32c6
           idf.py build
           python ../tools/verify_build.py
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         with:
           name: firmware
           path: |
