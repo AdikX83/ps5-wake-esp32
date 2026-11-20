@@ -18,13 +18,27 @@ when fully switched off.
 - Wakes the PS5 from **rest mode** and from **fully off** (tested).
 - Triggered by **Wake-on-LAN** – UDP (ports 9 and 7) and raw Ethernet frames sent by routers (e.g. ASUS /
   Asuswrt-Merlin) – or by a **short press of the BOOT button** on the board.
-- **Setup panel** in the browser (its own Wi-Fi network, HTTPS, `https://192.168.4.1`), in **30 languages**:
-  Wi-Fi, controller and console addresses, Wake-on-LAN options, test button, status.
+- **Setup panel** in the browser over HTTPS, in **30 languages** – in your home network, or through the board's own
+  Wi-Fi network (`https://192.168.4.1`): Wi-Fi, controller and console addresses, Wake-on-LAN options, wake button,
+  status.
+- **Console state** (on / rest mode / off) shown next to the wake button and sent to Home Assistant.
 - **Address reader** for Windows (no installation), macOS and Linux – downloadable from the panel.
 - **Home Assistant** integration over MQTT discovery (wake button, result of the last attempt) and a
   [REST API](docs/technical/api.md) – see [Home Assistant](docs/integrations/home-assistant.md).
 - **RGB status LED** (ready, connecting, no Wi-Fi, wake in progress, success / failure…).
 - Self-healing Wi-Fi, factory reset (hold BOOT 20 s), no cloud, no account, nothing leaves your network.
+
+## Setup panel
+
+<p align="center">
+  <img src="docs/images/panel-desktop.png" alt="PS5 Wake setup panel in a desktop browser: status of Wi-Fi, console, Home Assistant and the last wake-up" width="560">
+  &nbsp;
+  <img src="docs/images/panel-mobile.png" alt="The same panel on a phone" width="220">
+</p>
+
+The power button in the header wakes the console; the dot on it shows the console state (green on, orange rest
+mode, red off). Example data. [Whole page](docs/images/panel-full.png) – Wi-Fi, Bluetooth addresses,
+Wake-on-LAN, LED, panel access, HTTPS and Home Assistant settings.
 
 ## How it works (short)
 

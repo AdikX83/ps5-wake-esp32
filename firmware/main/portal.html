@@ -39,6 +39,7 @@ button.mini{padding:3px 10px;font-size:12.5px;margin-left:4px;vertical-align:bas
 a{color:var(--acc)}
 dl{display:grid;grid-template-columns:auto 1fr;gap:4px 12px;margin:0;font-size:14px}
 dt{color:var(--muted)}dd{margin:0;word-break:break-all}
+@media(max-width:480px){dl{grid-template-columns:1fr;gap:0}dt{font-size:12.5px;margin-top:8px}dt:first-child{margin-top:0}}
 .ok{color:var(--ok)}.bad{color:var(--bad)}.warn{color:var(--warn)}
 #msg{display:none;padding:10px 12px;border-radius:8px;margin-bottom:12px;font-size:14px}
 #msg.ok{display:block;background:#0f2a1a;border:1px solid #1f6b3a;color:#bdf5cf}
@@ -64,7 +65,7 @@ dt{color:var(--muted)}dd{margin:0;word-break:break-all}
 <section>
 <h2 data-t="status"></h2>
 <dl>
-<dt data-t="addr"></dt><dd style="white-space:nowrap"><a id="paddr" href="https://192.168.4.1/" style="color:var(--text)"><b id="paddrt">https://192.168.4.1</b></a> <span style="color:var(--muted)">(<span id="hostn">ps5-wake.local</span>)</span></dd>
+<dt data-t="addr"></dt><dd style="word-break:normal"><a id="paddr" href="https://192.168.4.1/" style="color:var(--text);white-space:nowrap"><b id="paddrt">https://192.168.4.1</b></a> <span style="color:var(--muted);white-space:nowrap">(<span id="hostn">ps5-wake.local</span>)</span></dd>
 <dt data-t="wifi"></dt><dd id="s_wifi">–</dd>
 <dt data-t="s_console"></dt><dd id="s_console">–</dd>
 <dt data-t="ip"></dt><dd id="s_ip">–</dd>

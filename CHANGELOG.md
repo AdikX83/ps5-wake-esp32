@@ -2,6 +2,12 @@
 
 All notable changes are listed here. The project follows [semantic versioning](https://semver.org/).
 
+## [Unreleased]
+
+- Panel: on narrow screens (phones) the status labels are shown above the values and the panel address no longer
+  runs past the edge of the card.
+- README: screenshots of the setup panel.
+
 ## [1.0.1]
 
 Web installer fixes; the firmware is unchanged apart from the version number.
