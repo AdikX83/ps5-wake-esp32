@@ -37,8 +37,27 @@ when fully switched off.
 </p>
 
 The power button in the header wakes the console; the dot on it shows the console state (green on, orange rest
-mode, red off). Example data. [Whole page](docs/images/panel-full.png) – Wi-Fi, Bluetooth addresses,
-Wake-on-LAN, LED, panel access, HTTPS and Home Assistant settings.
+mode, red off). The screenshots use example data.
+
+<table>
+  <tr>
+    <td width="50%" valign="top"><b>Wi-Fi</b> – network, password and country (channels 12–13)<br><br>
+      <img src="docs/images/panel-wifi.png" alt="Wi-Fi settings: network name with Scan button, password and country"></td>
+    <td width="50%" valign="top"><b>Bluetooth</b> – console and controller addresses from the address reader<br><br>
+      <img src="docs/images/panel-bluetooth.png" alt="Bluetooth settings: address reader downloads, setup code, PS5 and DualSense addresses"></td>
+  </tr>
+  <tr>
+    <td valign="top"><b>Wake-on-LAN</b> – the MAC to wake, consoles found in the network<br><br>
+      <img src="docs/images/panel-wol.png" alt="Wake-on-LAN settings: MAC of the ESP32, optional PS5 MAC and the list of consoles found"></td>
+    <td valign="top"><b>Home Assistant</b> – MQTT broker for automatic discovery<br><br>
+      <img src="docs/images/panel-mqtt.png" alt="Home Assistant settings: MQTT broker address, user name and password"></td>
+  </tr>
+  <tr>
+    <td valign="top"><b>LED and panel</b> – LED, device name, panel login, home-network access, HTTPS certificate<br><br>
+      <img src="docs/images/panel-led.png" alt="LED and panel settings: LED options, device name, panel user and password, access from home network, HTTPS and certificate"></td>
+    <td valign="top"></td>
+  </tr>
+</table>
 
 ## How it works (short)
 
