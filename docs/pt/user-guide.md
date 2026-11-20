@@ -14,7 +14,7 @@ PS. Funciona a partir do modo de repouso e com a consola completamente desligada
 ## 1. Instalar o firmware
 
 Abra o instalador web (link no README do projeto) no Chrome ou no Edge, ligue a placa com um cabo USB e clique em
-**Install**. Um dispositivo novo acende a **roxo**. Inicia sozinho a rede do painel de configuração.
+**Install or update**. Um dispositivo novo acende a **roxo**. Inicia sozinho a rede do painel de configuração.
 
 ## 2. Abrir o painel de configuração
 

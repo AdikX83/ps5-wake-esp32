@@ -14,7 +14,7 @@ Funciona desde el modo de reposo y con la consola totalmente apagada.
 ## 1. Instala el firmware
 
 Abre el instalador web (enlace en el README del proyecto) en Chrome o Edge, conecta la placa con un cable USB y pulsa
-**Install**. Un dispositivo nuevo se ilumina en **morado**. Inicia por sí solo la red del panel de configuración.
+**Install or update**. Un dispositivo nuevo se ilumina en **morado**. Inicia por sí solo la red del panel de configuración.
 
 ## 2. Abre el panel de configuración
 

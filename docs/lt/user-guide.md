@@ -11,7 +11,7 @@ PS5 Wake – tai maža ESP32-C6 plokštė, kuri įjungia jūsų PlayStation 5, k
 
 ## 1. Programinės aparatinės įrangos įdiegimas
 
-Atidarykite žiniatinklio diegimo programą (nuoroda projekto README) naršyklėje Chrome arba Edge, prijunkite plokštę USB kabeliu ir spustelėkite **Install**. Naujas įrenginys šviečia **violetine** spalva. Jis pats paleidžia nustatymų skydelio tinklą.
+Atidarykite žiniatinklio diegimo programą (nuoroda projekto README) naršyklėje Chrome arba Edge, prijunkite plokštę USB kabeliu ir spustelėkite **Install or update**. Naujas įrenginys šviečia **violetine** spalva. Jis pats paleidžia nustatymų skydelio tinklą.
 
 ## 2. Nustatymų skydelio atidarymas
 

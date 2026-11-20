@@ -90,10 +90,18 @@ do this, which is harmless.
 ### Web installer
 
 `web/` contains the installer page using [ESP Web Tools](https://esphome.github.io/esp-web-tools/). The release
-workflow copies the binaries next to it and writes `manifest.json`, which flashes the bootloader at `0x0`, the
-partition table at `0x8000` and the application at `0x10000`. The firmware does not implement Improv Serial, so ESP
-Web Tools treats every installation as a new one; `new_install_prompt_erase` makes it ask whether to erase the
-device. Answering no leaves NVS (`0x9000`) untouched, so an update keeps the settings.
+workflow copies the binaries next to it and writes two manifests:
+
+- `manifest.json` (**Install or update**) flashes the bootloader at `0x0`, the partition table at `0x8000` and the
+  application at `0x10000`. NVS (`0x9000`) is not touched, so the settings are kept.
+- `manifest-clean.json` (**Clean install**) also writes `blank-settings.bin`, 28 KB of `0xFF`, at `0x9000`, which
+  empties NVS and `phy_init` and so deletes the settings.
+
+The firmware does not implement Improv Serial, so ESP Web Tools treats every installation as a new one and asks
+whether to erase the whole chip (`new_install_prompt_erase`). The page replaces that question with a note and never
+erases the whole chip: on the ESP32-C6's native USB port the browser's chip erase does run, but its confirmation does
+not reach the page and the installer waits forever. Writing an empty settings area avoids the full erase. The page
+also removes the fixed "This will take 2 minutes" estimate from the dialog.
 
 ## Flash layout
 

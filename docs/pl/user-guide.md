@@ -14,7 +14,7 @@ Działa z trybu spoczynku i z całkowicie wyłączonej konsoli.
 ## 1. Zainstaluj firmware
 
 Otwórz instalator w przeglądarce (link w README projektu) w Chrome lub Edge, podłącz płytkę kablem USB i kliknij
-**Install**. Nowe urządzenie świeci na **fioletowo**. Od razu uruchamia sieć panelu konfiguracyjnego.
+**Install or update**. Nowe urządzenie świeci na **fioletowo**. Od razu uruchamia sieć panelu konfiguracyjnego.
 
 ## 2. Otwórz panel konfiguracyjny
 

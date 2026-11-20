@@ -11,7 +11,7 @@ PS5 Wake on pieni ESP32-C6-piirilevy, joka käynnistää PlayStation 5:n, kun se
 
 ## 1. Asenna laiteohjelmisto
 
-Avaa verkkoasennusohjelma (linkki projektin README-tiedostossa) Chromessa tai Edgessä, liitä levy USB-kaapelilla ja napsauta **Install**. Uusi laite palaa **violettina**. Se käynnistää asetuspaneelin verkon itsestään.
+Avaa verkkoasennusohjelma (linkki projektin README-tiedostossa) Chromessa tai Edgessä, liitä levy USB-kaapelilla ja napsauta **Install or update**. Uusi laite palaa **violettina**. Se käynnistää asetuspaneelin verkon itsestään.
 
 ## 2. Avaa asetuspaneeli
 

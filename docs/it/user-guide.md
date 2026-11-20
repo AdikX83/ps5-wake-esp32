@@ -15,7 +15,7 @@ pressione del tasto PS. Funziona dalla modalità riposo e con la console complet
 ## 1. Installa il firmware
 
 Apri l’installer web (link nel README del progetto) in Chrome o Edge, collega la scheda con un cavo USB e fai clic su
-**Install**. Un nuovo dispositivo si illumina di **viola**. Avvia da solo la rete del pannello di configurazione.
+**Install or update**. Un nuovo dispositivo si illumina di **viola**. Avvia da solo la rete del pannello di configurazione.
 
 ## 2. Apri il pannello di configurazione
 

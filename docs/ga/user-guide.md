@@ -11,7 +11,7 @@ Is clár beag ESP32-C6 é PS5 Wake a chasann do PlayStation 5 air nuair a fhaigh
 
 ## 1. An dochtearraí a shuiteáil
 
-Oscail an suiteálaí gréasáin (nasc in README an tionscadail) in Chrome nó Edge, ceangail an clár le cábla USB agus cliceáil **Install**. Lasann gléas nua **corcra**. Tosaíonn sé líonra an phainéil socraithe leis féin.
+Oscail an suiteálaí gréasáin (nasc in README an tionscadail) in Chrome nó Edge, ceangail an clár le cábla USB agus cliceáil **Install or update**. Lasann gléas nua **corcra**. Tosaíonn sé líonra an phainéil socraithe leis féin.
 
 ## 2. An painéal socraithe a oscailt
 

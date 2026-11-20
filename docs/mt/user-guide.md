@@ -11,7 +11,7 @@ PS5 Wake huwa bord żgħir ESP32-C6 li jixgħel il-PlayStation 5 tiegħek meta j
 
 ## 1. Installa l-firmware
 
-Iftaħ l-installatur tal-web (link fir-README tal-proġett) f’Chrome jew Edge, qabbad il-bord b’kejbil USB u kklikkja **Install**. Apparat ġdid jixgħel **vjola**. Jibda n-netwerk tal-pannell tal-konfigurazzjoni waħdu.
+Iftaħ l-installatur tal-web (link fir-README tal-proġett) f’Chrome jew Edge, qabbad il-bord b’kejbil USB u kklikkja **Install or update**. Apparat ġdid jixgħel **vjola**. Jibda n-netwerk tal-pannell tal-konfigurazzjoni waħdu.
 
 ## 2. Iftaħ il-pannell tal-konfigurazzjoni
 

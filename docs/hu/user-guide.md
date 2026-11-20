@@ -11,7 +11,7 @@ A PS5 Wake egy kis ESP32-C6 panel, amely bekapcsolja a PlayStation 5-öt, ha Wak
 
 ## 1. A firmware telepítése
 
-Nyissa meg a webes telepítőt (hivatkozás a projekt README-jében) Chrome-ban vagy Edge-ben, csatlakoztassa a panelt USB-kábellel, és kattintson az **Install** gombra. Az új eszköz **lilán** világít. Magától elindítja a beállítópanel hálózatát.
+Nyissa meg a webes telepítőt (hivatkozás a projekt README-jében) Chrome-ban vagy Edge-ben, csatlakoztassa a panelt USB-kábellel, és kattintson az **Install or update** gombra. Az új eszköz **lilán** világít. Magától elindítja a beállítópanel hálózatát.
 
 ## 2. A beállítópanel megnyitása
 

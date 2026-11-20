@@ -2,6 +2,16 @@
 
 All notable changes are listed here. The project follows [semantic versioning](https://semver.org/).
 
+## [1.0.1]
+
+Web installer fixes; the firmware is unchanged apart from the version number.
+
+- The installer page no longer freezes when writing starts (a loop in the code that hides the "This will take
+  2 minutes" estimate).
+- The "Erase device" question is gone: a full chip erase from the browser hangs on the ESP32-C6's native USB port.
+  The page has two buttons instead: **Install or update** keeps the settings, **Clean install** deletes them by
+  writing an empty settings area.
+
 ## [1.0.0]
 
 First public release.

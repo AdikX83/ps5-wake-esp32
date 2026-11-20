@@ -15,7 +15,7 @@ op de PS-knop. Het werkt vanuit de rustmodus en bij een volledig uitgeschakelde 
 ## 1. Firmware installeren
 
 Open de webinstaller (link in de README van het project) in Chrome of Edge, sluit het bordje met een USB-kabel aan en
-klik op **Install**. Een nieuw apparaat brandt **paars**. Het start vanzelf het netwerk van het instelpaneel.
+klik op **Install or update**. Een nieuw apparaat brandt **paars**. Het start vanzelf het netwerk van het instelpaneel.
 
 ## 2. Het instelpaneel openen
 

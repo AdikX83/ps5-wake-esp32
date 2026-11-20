@@ -15,7 +15,7 @@ wie ein Druck auf die PS-Taste. Das funktioniert aus dem Ruhemodus und bei volls
 ## 1. Firmware installieren
 
 Öffne den Web-Installer (Link im README des Projekts) in Chrome oder Edge, verbinde die Platine per USB-Kabel und
-klicke auf **Install**. Ein neues Gerät leuchtet **lila**. Es startet das Netzwerk des Einrichtungspanels von selbst.
+klicke auf **Install or update**. Ein neues Gerät leuchtet **lila**. Es startet das Netzwerk des Einrichtungspanels von selbst.
 
 ## 2. Einrichtungspanel öffnen
 

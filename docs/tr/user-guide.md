@@ -11,7 +11,7 @@ PS5 Wake, bir Wake-on-LAN paketi aldığında veya düğmesine bastığınızda 
 
 ## 1. Yazılımı yükleyin
 
-Web yükleyicisini (proje README'sindeki bağlantı) Chrome veya Edge'de açın, kartı USB kabloyla bağlayın ve **Install**'a tıklayın. Yeni bir cihaz **mor** yanar. Kurulum paneli ağını kendiliğinden başlatır.
+Web yükleyicisini (proje README'sindeki bağlantı) Chrome veya Edge'de açın, kartı USB kabloyla bağlayın ve **Install or update**'a tıklayın. Yeni bir cihaz **mor** yanar. Kurulum paneli ağını kendiliğinden başlatır.
 
 ## 2. Kurulum panelini açın
 

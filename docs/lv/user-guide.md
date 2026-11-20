@@ -11,7 +11,7 @@ PS5 Wake ir neliela ESP32-C6 plate, kas ieslēdz jūsu PlayStation 5, kad saņem
 
 ## 1. Programmaparatūras instalēšana
 
-Atveriet tīmekļa instalētāju (saite projekta README) pārlūkā Chrome vai Edge, pievienojiet plati ar USB kabeli un noklikšķiniet uz **Install**. Jauna ierīce deg **violetā** krāsā. Tā pati palaiž iestatīšanas paneļa tīklu.
+Atveriet tīmekļa instalētāju (saite projekta README) pārlūkā Chrome vai Edge, pievienojiet plati ar USB kabeli un noklikšķiniet uz **Install or update**. Jauna ierīce deg **violetā** krāsā. Tā pati palaiž iestatīšanas paneļa tīklu.
 
 ## 2. Iestatīšanas paneļa atvēršana
 

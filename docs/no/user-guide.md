@@ -11,7 +11,7 @@ PS5 Wake er et lite ESP32-C6-kort som slår på PlayStation 5 når det mottar en
 
 ## 1. Installer fastvaren
 
-Åpne nettinstallasjonsprogrammet (lenke i prosjektets README) i Chrome eller Edge, koble til kortet med en USB-kabel og klikk **Install**. En ny enhet lyser **lilla**. Det starter oppsettpanelets nettverk av seg selv.
+Åpne nettinstallasjonsprogrammet (lenke i prosjektets README) i Chrome eller Edge, koble til kortet med en USB-kabel og klikk **Install or update**. En ny enhet lyser **lilla**. Det starter oppsettpanelets nettverk av seg selv.
 
 ## 2. Åpne oppsettpanelet
 

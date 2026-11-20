@@ -53,7 +53,10 @@ jobs:
           cp firmware/build/bootloader/bootloader.bin firmware/build/partition_table/partition-table.bin \
              firmware/build/ps5_wake.bin site/firmware/
           sed "s/__VERSION__/$v/" web/manifest.template.json > site/manifest.json
-          rm site/manifest.template.json
+          sed "s/__VERSION__/$v/" web/manifest-clean.template.json > site/manifest-clean.json
+          rm site/manifest.template.json site/manifest-clean.template.json
+          # Empty settings area (nvs + phy_init, 0x9000-0xFFFF) written by "Clean install" instead of a chip erase.
+          head -c 28672 /dev/zero | tr '\0' '\377' > site/firmware/blank-settings.bin
           (cd dist && sha256sum * > SHA256SUMS.txt)
       - uses: actions/upload-artifact@v4
         with:

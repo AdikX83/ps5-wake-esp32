@@ -15,7 +15,7 @@ un appui sur la touche PS. Cela fonctionne depuis le mode repos et avec une cons
 ## 1. Installer le firmware
 
 Ouvrez l’installateur web (lien dans le README du projet) dans Chrome ou Edge, branchez la carte avec un câble USB
-et cliquez sur **Install**. Un nouvel appareil s’allume en **violet**. Il lance tout seul le réseau du panneau de configuration.
+et cliquez sur **Install or update**. Un nouvel appareil s’allume en **violet**. Il lance tout seul le réseau du panneau de configuration.
 
 ## 2. Ouvrir le panneau de configuration
 

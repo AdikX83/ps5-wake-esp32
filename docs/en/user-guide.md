@@ -14,7 +14,7 @@ button. It works from rest mode and from a fully switched-off console.
 ## 1. Install the firmware
 
 Open the web installer (link in the project README) in Chrome or Edge, connect the board with a USB cable and click
-**Install**. A new device lights **purple**. It starts the setup panel network by itself.
+**Install or update**. A new device lights **purple**. It starts the setup panel network by itself.
 
 ## 2. Open the setup panel
 

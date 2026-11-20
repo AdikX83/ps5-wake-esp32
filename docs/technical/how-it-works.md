@@ -120,7 +120,7 @@ that answer discovery; choosing one stores its network MAC, so the console state
 
 All settings are kept in NVS (namespace with keys for Wi-Fi, Bluetooth addresses, WoL MAC, country, language, LED and
 panel options, panel password). A 20-second press of BOOT erases them. Flashing a new firmware version through the
-web installer keeps NVS.
+web installer with **Install or update** keeps NVS; **Clean install** empties it.
 
 ## Address reader (`tools/reader`)
 

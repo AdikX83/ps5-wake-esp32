@@ -11,7 +11,7 @@ PS5 Wake er et lille ESP32-C6-board, der tænder din PlayStation 5, når det mod
 
 ## 1. Installer firmwaren
 
-Åbn webinstallationsprogrammet (link i projektets README) i Chrome eller Edge, tilslut boardet med et USB-kabel, og klik på **Install**. En ny enhed lyser **lilla**. Det starter selv opsætningspanelets netværk.
+Åbn webinstallationsprogrammet (link i projektets README) i Chrome eller Edge, tilslut boardet med et USB-kabel, og klik på **Install or update**. En ny enhed lyser **lilla**. Det starter selv opsætningspanelets netværk.
 
 ## 2. Åbn opsætningspanelet
 

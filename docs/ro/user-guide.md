@@ -11,7 +11,7 @@ PS5 Wake este o plăcuță mică ESP32-C6 care pornește PlayStation 5 când pri
 
 ## 1. Instalarea firmware-ului
 
-Deschideți instalatorul web (linkul din README-ul proiectului) în Chrome sau Edge, conectați plăcuța cu un cablu USB și faceți clic pe **Install**. Un dispozitiv nou luminează **mov**. Pornește singur rețeaua panoului de configurare.
+Deschideți instalatorul web (linkul din README-ul proiectului) în Chrome sau Edge, conectați plăcuța cu un cablu USB și faceți clic pe **Install or update**. Un dispozitiv nou luminează **mov**. Pornește singur rețeaua panoului de configurare.
 
 ## 2. Deschiderea panoului de configurare
 

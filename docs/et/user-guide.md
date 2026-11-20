@@ -11,7 +11,7 @@ PS5 Wake on väike ESP32-C6 plaat, mis lülitab PlayStation 5 sisse, kui see saa
 
 ## 1. Püsivara paigaldamine
 
-Avage veebipaigaldaja (link projekti README-s) Chrome'is või Edge'is, ühendage plaat USB-kaabliga ja klõpsake **Install**. Uus seade põleb **lillana**. See käivitab seadistuspaneeli võrgu ise.
+Avage veebipaigaldaja (link projekti README-s) Chrome'is või Edge'is, ühendage plaat USB-kaabliga ja klõpsake **Install or update**. Uus seade põleb **lillana**. See käivitab seadistuspaneeli võrgu ise.
 
 ## 2. Seadistuspaneeli avamine
 

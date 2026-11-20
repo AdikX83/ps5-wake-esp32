@@ -11,7 +11,7 @@ PS5 Wake je mala pločica ESP32-C6 koja uključuje vaš PlayStation 5 kad primi 
 
 ## 1. Instalacija firmvera
 
-Otvorite web-instalacijski program (poveznica u README-u projekta) u Chromeu ili Edgeu, spojite pločicu USB kabelom i kliknite **Install**. Novi uređaj svijetli **ljubičasto**. Sam pokreće mrežu ploče za postavke.
+Otvorite web-instalacijski program (poveznica u README-u projekta) u Chromeu ili Edgeu, spojite pločicu USB kabelom i kliknite **Install or update**. Novi uređaj svijetli **ljubičasto**. Sam pokreće mrežu ploče za postavke.
 
 ## 2. Otvaranje ploče za postavke
 

@@ -11,7 +11,7 @@ PS5 Wake je malá doska ESP32-C6, ktorá zapne váš PlayStation 5, keď prijme 
 
 ## 1. Inštalácia firmvéru
 
-Otvorte webový inštalátor (odkaz v README projektu) v Chrome alebo Edge, pripojte dosku USB káblom a kliknite na **Install**. Nové zariadenie svieti **fialovo**. Sám spustí sieť konfiguračného panela.
+Otvorte webový inštalátor (odkaz v README projektu) v Chrome alebo Edge, pripojte dosku USB káblom a kliknite na **Install or update**. Nové zariadenie svieti **fialovo**. Sám spustí sieť konfiguračného panela.
 
 ## 2. Otvorenie konfiguračného panela
 

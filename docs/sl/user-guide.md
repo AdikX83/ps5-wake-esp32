@@ -11,7 +11,7 @@ PS5 Wake je majhna plošča ESP32-C6, ki vklopi vaš PlayStation 5, ko prejme pa
 
 ## 1. Namestitev vdelane programske opreme
 
-V brskalniku Chrome ali Edge odprite spletni namestitveni program (povezava v README projekta), ploščo povežite s kablom USB in kliknite **Install**. Nova naprava sveti **vijolično**. Samodejno zažene omrežje nastavitvene plošče.
+V brskalniku Chrome ali Edge odprite spletni namestitveni program (povezava v README projekta), ploščo povežite s kablom USB in kliknite **Install or update**. Nova naprava sveti **vijolično**. Samodejno zažene omrežje nastavitvene plošče.
 
 ## 2. Odpiranje nastavitvene plošče
 
