@@ -40,6 +40,10 @@ a **Bluetooth Classic** connection from a controller it is paired with. PS5 Wake
 4. A paired controller initiating this procedure is what the PS5 treats as "PS button pressed": it powers on.
    The link is then dropped – the real controller takes over normally.
 
+The Bluetooth controller and Soft-BR are started for each attempt and switched off completely afterwards, so every
+attempt starts from the same state as after a restart and Wi-Fi has the radio to itself in between. If the console
+does not answer, a second attempt follows at once.
+
 The attempt result (console answered / no answer) is shown on the LED and in the panel status.
 
 ### Soft-BR and the local patch

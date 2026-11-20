@@ -7,6 +7,8 @@ if(NOT IDF_VERSION_MAJOR EQUAL 5 OR NOT IDF_VERSION_MINOR EQUAL 5 OR NOT IDF_VER
     message(FATAL_ERROR "The Soft-BR radio adapter requires ESP-IDF 5.5.5 exactly")
 endif()
 file(STRINGS "${CMAKE_CURRENT_LIST_DIR}/../VERSION" PS5_WAKE_VERSION LIMIT_COUNT 1)
+# Re-run the configuration when VERSION changes, so an incremental build never keeps an old version string.
+set_property(DIRECTORY APPEND PROPERTY CMAKE_CONFIGURE_DEPENDS "${CMAKE_CURRENT_LIST_DIR}/../VERSION")
 set(PROJECT_VER "${PS5_WAKE_VERSION}")
 set(COMPONENTS main)
 project(ps5_wake)

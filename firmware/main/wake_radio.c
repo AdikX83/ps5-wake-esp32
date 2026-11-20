@@ -202,6 +202,23 @@ static void run_link(uint32_t window_ms, const uint8_t controller[6])
     lmp_active = false;
 }
 
+/* Turns Bluetooth off completely after an attempt: Soft-BR engine, then the controller. Each attempt then starts
+ * from the same fresh state as after a restart (long-running Bluetooth state stopped answering after many hours),
+ * and between attempts Wi-Fi does not share the radio with an idle Bluetooth controller. */
+void wake_radio_shutdown(void)
+{
+    if (adapter_started || br_c6_on()) br_c6_deinit();
+    adapter_started = false;
+    if (controller_started) {
+        esp_err_t disabled = esp_bt_controller_disable();
+        esp_err_t deinit = esp_bt_controller_deinit();
+        if (disabled != ESP_OK || deinit != ESP_OK)
+            ESP_LOGW(TAG, "Bluetooth off: disable=%s deinit=%s", esp_err_to_name(disabled), esp_err_to_name(deinit));
+        else ESP_LOGI(TAG, "Bluetooth off until the next wake attempt");
+        controller_started = false;
+    }
+}
+
 esp_err_t wake_radio_attempt(const uint8_t ps5[6], const uint8_t controller[6], bool derived_identity)
 {
     if (!events) events = xQueueCreate(16, sizeof(radio_event_t));

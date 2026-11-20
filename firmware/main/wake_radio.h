@@ -8,3 +8,5 @@ esp_err_t wake_radio_attempt(const uint8_t ps5[6], const uint8_t controller[6], 
 /* Result of the last attempt for the configuration panel: conn_status -1 = no attempt yet,
  * -2 = no Connection Complete, otherwise the HCI status (0 = link up). */
 void wake_radio_last(int *conn_status, uint16_t *lmp_rx, int64_t *time_us);
+/* Turns the Bluetooth controller and the Soft-BR engine off; the next attempt starts them fresh. */
+void wake_radio_shutdown(void);

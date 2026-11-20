@@ -47,6 +47,8 @@ Current state and settings (passwords are never returned).
 | `country`, `country_set`, `country_active` | Wi-Fi country setting (`""` = automatic, from the router), whether it was ever set, the code the Wi-Fi driver uses now |
 | `lang` | panel language |
 | `wol_count` | accepted Wake-on-LAN packets since start |
+| `wake_attempts`, `wake_answered`, `wake_retries` | wake attempts since start, how many the console answered, automatic second attempts |
+| `uptime_s` | seconds since the ESP32 started |
 | `busy` | a wake attempt is running |
 | `ps5_power`, `ps5_name`, `ps5_ip` | console state from the PlayStation discovery protocol: `on`, `standby` (rest mode), `off`, `unknown` (not found yet); the console's name and IP when found |
 | `last_wake.status` | `-1` none yet, `0` finished, `-2` waiting, other values: radio error |

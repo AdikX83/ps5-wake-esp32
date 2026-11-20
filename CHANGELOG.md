@@ -2,6 +2,16 @@
 
 All notable changes are listed here. The project follows [semantic versioning](https://semver.org/).
 
+## [1.0.3]
+
+- Wake-up: Bluetooth now starts from scratch for every attempt and is switched off completely afterwards. After many
+  hours of uptime the console stopped answering until the ESP32 was restarted; every attempt now starts from the same
+  state as after a restart, and Wi-Fi no longer shares the radio with an idle Bluetooth controller.
+- Wake-up: if the console does not answer, a second attempt follows at once.
+- Wi-Fi power saving is switched off again after each Bluetooth use.
+- `/api/status`: `wake_attempts`, `wake_answered`, `wake_retries`, `uptime_s`.
+- Build: a change of `VERSION` now re-runs the configuration, so incremental builds never keep an old version string.
+
 ## [1.0.2]
 
 - Panel: notice when a newer release is available on GitHub, with links to the release notes and the web installer.

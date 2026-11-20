@@ -46,6 +46,7 @@ static portMUX_TYPE request_lock = portMUX_INITIALIZER_UNLOCKED;
 static const char *TAG = "ps5_wol";
 /* portal_always: the panel on the home network ("Access from home network"), on by default; panel_https: HTTPS there. */
 static bool configured, safe_mode, led_idle_off, led_dark, wol_ps5_set, portal_always = true, panel_https = true;
+static uint32_t wake_attempts, wake_answered, wake_retries; /* since boot, for diagnostics */
 static bool update_check = true; /* the panel asks GitHub for new releases (from the browser, not the ESP32) */
 static uint8_t wol_ps5[6];
 static volatile bool sta_paused;
@@ -346,10 +347,24 @@ static void wake_task(void *arg)
         ha_mqtt_wake_state("waking");
         ps5_state_kick();
         esp_err_t result = wake_radio_attempt(settings.ps5, settings.controller, token == 2);
-        led_set_busy(false);
+        wake_radio_shutdown(); /* fresh Bluetooth for every attempt, radio left to Wi-Fi in between */
         int status = -1;
         uint16_t lmp_rx = 0;
         wake_radio_last(&status, &lmp_rx, NULL);
+        ++wake_attempts;
+        if (token != 2 && !(status == 0 && lmp_rx > 0)) {
+            /* One more try from a fresh start: the console may have missed the first page. */
+            ++wake_retries;
+            ESP_LOGW(TAG, "WAKE_RETRY: no answer, second attempt");
+            vTaskDelay(pdMS_TO_TICKS(500));
+            result = wake_radio_attempt(settings.ps5, settings.controller, false);
+            wake_radio_shutdown();
+            wake_radio_last(&status, &lmp_rx, NULL);
+        }
+        if (status == 0 && lmp_rx > 0) ++wake_answered;
+        esp_err_t ps = esp_wifi_set_ps(WIFI_PS_NONE); /* keep Wi-Fi out of power saving after Bluetooth use */
+        if (ps != ESP_OK) ESP_LOGW(TAG, "esp_wifi_set_ps(NONE): %s", esp_err_to_name(ps));
+        led_set_busy(false);
         led_event(status == 0 && lmp_rx > 0 ? LED_EVENT_SUCCESS : LED_EVENT_FAILURE);
         ha_mqtt_wake_state(status == 0 && lmp_rx > 0 ? "answered" : "no_answer");
         ps5_state_kick();
@@ -612,6 +627,10 @@ void app_status_json(cJSON *root)
         cJSON_AddStringToObject(root, "country_active", code);
     }
     cJSON_AddNumberToObject(root, "wol_count", accepted_packets);
+    cJSON_AddNumberToObject(root, "wake_attempts", wake_attempts);
+    cJSON_AddNumberToObject(root, "wake_answered", wake_answered);
+    cJSON_AddNumberToObject(root, "wake_retries", wake_retries);
+    cJSON_AddNumberToObject(root, "uptime_s", (double)(esp_timer_get_time() / 1000000));
     cJSON_AddBoolToObject(root, "busy", busy);
     cJSON_AddBoolToObject(root, "led_idle_off", led_idle_off);
     cJSON_AddBoolToObject(root, "led_dark", led_dark);
